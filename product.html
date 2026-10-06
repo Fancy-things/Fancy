@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Couture - Fiche Produit</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            background: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: #faf7f5;
+        }
+
+        .logo-container {
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .logo {
+            max-width: 350px;
+            display: block;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 5px;
+            font-style: italic;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .product-container {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .product-details h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            color: #d4af37;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .product-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 30px 0;
+            color: #555;
+        }
+
+        .product-features {
+            margin: 30px 0;
+            padding: 20px;
+            background: #faf7f5;
+            border-radius: 8px;
+        }
+
+        .product-features h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .product-features ul {
+            list-style: none;
+            margin-left: 20px;
+        }
+
+        .product-features li {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .product-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .quantity-selector label {
+            font-weight: bold;
+        }
+
+        .quantity-selector input {
+            width: 60px;
+            padding: 8px;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .buy-button {
+            display: inline-block;
+            width: 100%;
+            padding: 15px 30px;
+            margin-top: 20px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background: #444;
+        }
+
+        .add-to-cart-button {
+            display: inline-block;
+            width: 100%;
+            padding: 15px 30px;
+            margin-top: 10px;
+            background: #d4af37;
+            color: #000;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .add-to-cart-button:hover {
+            background: #c49b2e;
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                margin: 40px auto;
+                gap: 30px;
+            }
+
+            .product-details h1 {
+                font-size: 1.8rem;
+            }
+
+            .product-price {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="Fancy.png" alt="Fancy Couture Logo" class="logo">
+        <p class="signature">
+            Heartmade by Ire
+        </p>
+    </div>
+</header>
+
+<div class="product-container">
+    <!-- Image du produit -->
+    <div class="product-image-wrapper">
+        <img src="photos/image1.jpg" alt="Produit Fancy Couture" class="product-image">
+    </div>
+
+    <!-- Détails du produit -->
+    <div class="product-details">
+        <h1>Sac Personnalisé Luxe</h1>
+        
+        <div class="product-price">50 €</div>
+
+        <div class="product-description">
+            <p>Découvrez notre magnifique sac conçu sur mesure avec les plus fines matières. Chaque pièce est une création unique, façonnée par nos artisans avec soin et passion. Broderies délicates, finitions impeccables, c'est la signature de Fancy Couture.</p>
+        </div>
+
+        <div class="product-features">
+            <h3>Caractéristiques</h3>
+            <ul>
+                <li>Matière premium de haute qualité</li>
+                <li>Broderie artisanale personnalisée</li>
+                <li>Dimensions : 30 x 20 x 10 cm</li>
+                <li>Fermeture magnétique sécurisée</li>
+                <li>Doublure en soie véritable</li>
+                <li>Création unique et limitée</li>
+            </ul>
+        </div>
+
+        <div class="quantity-selector">
+            <label for="quantity">Quantité :</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1">
+        </div>
+
+        <!-- Bouton d'achat direct -->
+        <a href="mailto:contact@fancy.fr?subject=Commande%20Sac%20Personnalisé%20Luxe%20-%2050€&body=Bonjour%0A%0AJe%20souhaite%20commander%20le%20Sac%20Personnalisé%20Luxe%20à%2050€.%0A%0AMerci%20!%0A%0ACordialement" class="buy-button">
+            Acheter maintenant
+        </a>
+
+        <!-- Bouton panier (futur) -->
+        <button class="add-to-cart-button" onclick="addToCart()">
+            Ajouter au panier
+        </button>
+
+        <div class="contact-info">
+            <p><strong>Questions ?</strong></p>
+            <p>Email : contact@fancy.fr</p>
+            <p>Instagram : @fancy</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    © 2026 Fancy Couture
+</footer>
+
+<script>
+    function addToCart() {
+        const quantity = document.getElementById('quantity').value;
+        alert(`${quantity} produit(s) ajouté(s) au panier !`);
+        // Ici tu peux ajouter la logique du panier (localStorage ou backend)
+    }
+</script>
+
+</body>
+
+</html>
