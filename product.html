@@ -65,6 +65,7 @@
         .product-details h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            letter-spacing: 0.03em;
         }
 
         .product-price {
@@ -131,21 +132,31 @@
             font-size: 1rem;
         }
 
-        .buy-button {
+        .buy-button,
+        .add-to-cart-button {
             display: inline-block;
             width: 100%;
             padding: 15px 30px;
-            margin-top: 20px;
-            background: #000;
-            color: white;
-            text-decoration: none;
+            margin-top: 10px;
             border-radius: 8px;
             text-align: center;
             font-size: 1.1rem;
             font-weight: bold;
+            text-decoration: none;
             border: none;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .buy-button {
+            background: #000;
+            color: white;
+            margin-top: 20px;
+        }
+
+        .buy-button:hover,
+        .add-to-cart-button:hover {
+            transform: translateY(-1px);
         }
 
         .buy-button:hover {
@@ -153,20 +164,8 @@
         }
 
         .add-to-cart-button {
-            display: inline-block;
-            width: 100%;
-            padding: 15px 30px;
-            margin-top: 10px;
             background: #d4af37;
             color: #000;
-            text-decoration: none;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s ease;
         }
 
         .add-to-cart-button:hover {
@@ -223,19 +222,17 @@
 </header>
 
 <div class="product-container">
-    <!-- Image du produit -->
     <div class="product-image-wrapper">
-        <img id="productImage" src="photos/image1.jpg" alt="Produit Fancy Couture" class="product-image">
+        <img id="productImage" src="photos/image1.jpg" alt="Banane XL" class="product-image">
     </div>
 
-    <!-- Détails du produit -->
     <div class="product-details">
-        <h1>Banana XL</h1>
+        <h1>Banane XL</h1>
         
         <div class="product-price">50 €</div>
 
         <div class="product-description">
-            <p>Découvrez notre magnifique sac Banana XL conçu sur mesure avec les plus fines matières. Chaque pièce est une création unique, façonnée par nos artisans avec soin et passion. Broderies délicates et personnalisation sur demande.</p>
+            <p>Découvrez notre magnifique Banane XL conçue sur mesure avec les plus fines matières. Chaque pièce est une création unique, façonnée par nos artisans avec soin et passion. Broderies délicates et personnalisation sur demande.</p>
         </div>
 
         <div class="product-features">
@@ -255,12 +252,10 @@
             <input type="number" id="quantity" name="quantity" min="1" value="1">
         </div>
 
-        <!-- Bouton d'achat direct -->
-        <a href="mailto:contact@fancy.fr?subject=Commande%20Banana%20XL%20-%2050€&body=Bonjour%0A%0AJe%20souhaite%20commander%20le%20Banana%20XL%20à%2050€.%0A%0AMerci" class="buy-button">
+        <a href="mailto:contact@fancy.fr?subject=Commande%20Banane%20XL%20-%2050€&body=Bonjour%0A%0AJe%20souhaite%20commander%20la%20Banane%20XL%20à%2050€.%0A%0AMerci" class="buy-button">
             Acheter maintenant
         </a>
 
-        <!-- Bouton panier (futur) -->
         <button class="add-to-cart-button" onclick="addToCart()">
             Ajouter au panier
         </button>
@@ -283,15 +278,16 @@
         alert(`${quantity} produit(s) ajouté(s) au panier !`);
     }
 
-    function getProductImage() {
+    function updateProductImage() {
         const params = new URLSearchParams(window.location.search);
         const imageNum = params.get('image') || '1';
         const imagePath = `photos/image${imageNum}.jpg`;
-        document.getElementById('productImage').src = imagePath;
-        document.getElementById('productImage').alt = `Banana XL - image ${imageNum}`;
+        const productImage = document.getElementById('productImage');
+        productImage.src = imagePath;
+        productImage.alt = `Banane XL - image ${imageNum}`;
     }
 
-    getProductImage();
+    updateProductImage();
 </script>
 
 </body>
