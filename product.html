@@ -225,17 +225,17 @@
 <div class="product-container">
     <!-- Image du produit -->
     <div class="product-image-wrapper">
-        <img src="photos/image1.jpg" alt="Produit Fancy Couture" class="product-image">
+        <img id="productImage" src="photos/image1.jpg" alt="Produit Fancy Couture" class="product-image">
     </div>
 
     <!-- Détails du produit -->
     <div class="product-details">
-        <h1>Sac Personnalisé Luxe</h1>
+        <h1>Banana XL</h1>
         
         <div class="product-price">50 €</div>
 
         <div class="product-description">
-            <p>Découvrez notre magnifique sac conçu sur mesure avec les plus fines matières. Chaque pièce est une création unique, façonnée par nos artisans avec soin et passion. Broderies délicates, finitions impeccables, c'est la signature de Fancy Couture.</p>
+            <p>Découvrez notre magnifique sac Banana XL conçu sur mesure avec les plus fines matières. Chaque pièce est une création unique, façonnée par nos artisans avec soin et passion. Broderies délicates et personnalisation sur demande.</p>
         </div>
 
         <div class="product-features">
@@ -256,7 +256,7 @@
         </div>
 
         <!-- Bouton d'achat direct -->
-        <a href="mailto:contact@fancy.fr?subject=Commande%20Sac%20Personnalisé%20Luxe%20-%2050€&body=Bonjour%0A%0AJe%20souhaite%20commander%20le%20Sac%20Personnalisé%20Luxe%20à%2050€.%0A%0AMerci%20!%0A%0ACordialement" class="buy-button">
+        <a href="mailto:contact@fancy.fr?subject=Commande%20Banana%20XL%20-%2050€&body=Bonjour%0A%0AJe%20souhaite%20commander%20le%20Banana%20XL%20à%2050€.%0A%0AMerci" class="buy-button">
             Acheter maintenant
         </a>
 
@@ -281,8 +281,17 @@
     function addToCart() {
         const quantity = document.getElementById('quantity').value;
         alert(`${quantity} produit(s) ajouté(s) au panier !`);
-        // Ici tu peux ajouter la logique du panier (localStorage ou backend)
     }
+
+    function getProductImage() {
+        const params = new URLSearchParams(window.location.search);
+        const imageNum = params.get('image') || '1';
+        const imagePath = `photos/image${imageNum}.jpg`;
+        document.getElementById('productImage').src = imagePath;
+        document.getElementById('productImage').alt = `Banana XL - image ${imageNum}`;
+    }
+
+    getProductImage();
 </script>
 
 </body>
