@@ -27,12 +27,23 @@
             background: #faf7f5;
         }
 
-        .logo {
-            max-width: 350px;
-            width: 90%;
-            margin-bottom: 20px;
+        .logo-container {
+            display: inline-block;
         }
-
+ 
+        .logo {
+        max-width: 350px;
+        display: block;
+        }
+ 
+        .signature {
+        text-align: right;
+        margin-top: 5px;
+        font-style: italic;
+        font-size: 1rem;
+        color: #555;
+        }
+        
         .hero-title {
             font-size: 3rem;
             margin-bottom: 15px;
@@ -117,8 +128,15 @@
 
 <header>
  
-<img src="Fancy.png" alt="Logo Fancy" class="Heartmade by Ire
+<div class="logo-container">
+ 
+Fancy.png
+ 
+<p class="signature">
+Heartmade by Ire
 </p>
+ 
+</div>
  
 </header>
 
