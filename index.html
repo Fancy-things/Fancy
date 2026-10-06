@@ -16,7 +16,7 @@
 
         body {
             font-family: Georgia, serif;
-            background: linear-gradient(180deg, #f7c4d1 0%, #fff4e8 100%);
+            background: #f5d6e0;
             color: #1a1a1a;
             line-height: 1.6;
         }
@@ -24,7 +24,7 @@
         header {
             text-align: center;
             padding: 60px 20px;
-            background: #f7c4d1;
+            background: #f5d6e0;
         }
 
         .logo-container {
@@ -66,12 +66,28 @@
 
         .card {
             background: rgba(255,255,255,0.55);
-            border: 1px solid #f0bdd0;
-            border-radius: 12px;
+            border: 1px solid #efc4d8;
+            border-radius: 20px;
             padding: 25px;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             color: #1a1a1a;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card h3 {
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin: 0;
         }
 
         .gallery {
@@ -144,7 +160,7 @@
         </div>
         <div class="card">
             <h3>Personnalisation</h3>
-            <p>Broderies, modifications et finitions personnalisées.</p>
+            <p>Un fermoir rouge, une lanière bleue et une moitié bleue, une autre jaune.</p>
         </div>
     </div>
 </section>
