@@ -141,7 +141,8 @@
         }
 
         .buy-button,
-        .add-to-cart-button {
+        .add-to-cart-button,
+        .view-cart-button {
             display: inline-block;
             width: 100%;
             padding: 15px 30px;
@@ -163,7 +164,8 @@
         }
 
         .buy-button:hover,
-        .add-to-cart-button:hover {
+        .add-to-cart-button:hover,
+        .view-cart-button:hover {
             transform: translateY(-1px);
         }
 
@@ -178,6 +180,16 @@
 
         .add-to-cart-button:hover {
             background: #f57a3a;
+        }
+
+        .view-cart-button {
+            background: #d94d7a;
+            color: white;
+            margin-top: 12px;
+        }
+
+        .view-cart-button:hover {
+            background: #c93d6d;
         }
 
         .contact-info {
@@ -237,7 +249,7 @@
 
     <div class="product-details">
         <h1>Banane XL</h1>
-        
+
         <div class="product-price">50 €</div>
 
         <div class="product-description">
@@ -266,6 +278,8 @@
             Ajouter au panier
         </button>
 
+        <a href="cart.html" class="view-cart-button">Voir le panier</a>
+
         <div class="contact-info">
             <p><strong>Questions ?</strong></p>
             <p>Email : contact@fancy.fr</p>
@@ -279,8 +293,40 @@
 </footer>
 
 <script>
+    const CART_KEY = 'fancyCart';
+
+    function getCart() {
+        try {
+            return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+        } catch (error) {
+            return [];
+        }
+    }
+
+    function saveCart(cart) {
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+
     function addToCart() {
-        const quantity = document.getElementById('quantity').value;
+        const quantity = parseInt(document.getElementById('quantity').value, 10) || 1;
+        const product = {
+            id: 'banane-xl',
+            name: 'Banane XL',
+            price: 50,
+            image: 'photos/image1.jpg',
+            quantity: quantity
+        };
+
+        const cart = getCart();
+        const existingIndex = cart.findIndex(item => item.id === product.id);
+
+        if (existingIndex >= 0) {
+            cart[existingIndex].quantity += quantity;
+        } else {
+            cart.push(product);
+        }
+
+        saveCart(cart);
         alert(`${quantity} produit(s) ajouté(s) au panier !`);
     }
 
