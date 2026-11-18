@@ -1,308 +1,125 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panier - Fancy Couture</title>
-
+    <title>Mon panier - Fancy Couture</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Georgia, serif;
-            background: linear-gradient(180deg, #f7c4d1 0%, #fff4e8 100%);
-            color: #1a1a1a;
-            line-height: 1.6;
-        }
-
-        header {
-            text-align: center;
-            padding: 60px 20px 30px;
-            background: #f7c4d1;
-        }
-
-        .logo-container {
-            width: fit-content;
-            margin: 0 auto;
-        }
-
-        .logo {
-            max-width: 350px;
-            display: block;
-        }
-
-        .signature {
-            text-align: right;
-            margin-top: 5px;
-            font-style: italic;
-            font-size: 1rem;
-            color: #5a2d00;
-        }
-
-        .cart-page {
-            max-width: 1000px;
-            margin: 40px auto 80px;
-            padding: 0 20px;
-        }
-
-        .cart-title {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.5rem;
-        }
-
-        .cart-item {
-            display: grid;
-            grid-template-columns: 120px 1fr auto auto;
-            align-items: center;
-            gap: 20px;
-            background: rgba(255,255,255,0.45);
-            border: 1px solid #efc4d8;
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .cart-item img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-
-        .cart-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 6px;
-        }
-
-        .cart-item .price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #d96f4d;
-        }
-
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255,255,255,0.4);
-            border-radius: 10px;
-            padding: 8px 12px;
-        }
-
-        .quantity-control button {
-            width: 30px;
-            height: 30px;
-            border: none;
-            border-radius: 50%;
-            background: #ff9b6b;
-            color: #111;
-            font-size: 1.2rem;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .remove-btn {
-            background: #111;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 10px 14px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .cart-summary {
-            background: rgba(255,255,255,0.45);
-            border: 1px solid #efc4d8;
-            border-radius: 16px;
-            padding: 24px;
-            margin-top: 30px;
-        }
-
-        .cart-summary h3 {
-            margin-bottom: 15px;
-            font-size: 1.6rem;
-        }
-
-        .total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .empty-cart {
-            text-align: center;
-            background: rgba(255,255,255,0.45);
-            border: 1px solid #efc4d8;
-            border-radius: 16px;
-            padding: 40px 20px;
-            font-size: 1.2rem;
-        }
-
-        .actions {
-            margin-top: 30px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .primary-btn,
-        .secondary-btn {
-            display: inline-block;
-            padding: 14px 22px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            text-align: center;
-            border: none;
-            cursor: pointer;
-        }
-
-        .primary-btn {
-            background: #111;
-            color: white;
-        }
-
-        .secondary-btn {
-            background: #ff9b6b;
-            color: #111;
-        }
-
-        @media (max-width: 768px) {
-            .cart-item {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .cart-item img {
-                max-width: 200px;
-                margin: 0 auto;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; background: linear-gradient(180deg, #f7c4d1 0%, #fff4e8 100%); color: #1a1a1a; line-height: 1.6; }
+        header { text-align: center; padding: 40px 20px 20px; background: #f7c4d1; }
+        .logo { max-width: 350px; width: 100%; display: block; margin: 0 auto; }
+        .signature { text-align: right; max-width: 350px; margin: 5px auto 0; font-style: italic; color: #5a2d00; }
+        .cart-page { max-width: 1000px; margin: 35px auto 75px; padding: 0 20px; }
+        .cart-title { text-align: center; margin-bottom: 30px; font-size: 2.5rem; }
+        .cart-item { display: grid; grid-template-columns: 120px 1fr auto auto; align-items: center; gap: 20px; background: rgba(255,255,255,.5); border: 1px solid #efc4d8; border-radius: 16px; padding: 18px; margin-bottom: 16px; }
+        .cart-item img { width: 120px; height: 120px; object-fit: cover; border-radius: 12px; }
+        .item-name { font-size: 1.3rem; margin-bottom: 5px; }
+        .price { font-size: 1.1rem; font-weight: bold; color: #d96f4d; }
+        .quantity-control { display: flex; align-items: center; gap: 12px; }
+        .quantity-control button { width: 34px; height: 34px; border: 0; border-radius: 50%; background: #ff9b6b; font-size: 1.2rem; cursor: pointer; }
+        .remove-btn { background: #111; color: white; border: 0; border-radius: 8px; padding: 10px 14px; cursor: pointer; font-weight: bold; }
+        .cart-summary, .empty-cart { background: rgba(255,255,255,.5); border: 1px solid #efc4d8; border-radius: 16px; padding: 24px; margin-top: 25px; }
+        .cart-summary h2 { margin-bottom: 12px; font-size: 1.5rem; }
+        .total { display: flex; justify-content: space-between; font-size: 1.4rem; font-weight: bold; margin-top: 10px; }
+        .actions { margin-top: 24px; display: flex; gap: 14px; flex-wrap: wrap; }
+        .primary-btn, .secondary-btn { display: inline-block; padding: 14px 22px; border-radius: 8px; text-decoration: none; font-weight: bold; text-align: center; border: 0; cursor: pointer; font: bold 1rem Georgia, serif; }
+        .primary-btn { background: #111; color: white; }
+        .secondary-btn { background: #ff9b6b; color: #111; }
+        .empty-cart { text-align: center; padding: 40px 20px; font-size: 1.2rem; }
+        .payment-note { margin-top: 14px; color: #51454a; font-size: .95rem; }
+        footer { background: #111; color: white; text-align: center; padding: 30px; }
+        @media (max-width: 700px) { .cart-item { grid-template-columns: 90px 1fr; gap: 12px; } .cart-item img { width: 90px; height: 90px; } .quantity-control, .remove-btn { grid-column: 2; justify-self: start; } .remove-btn { grid-column: 1 / -1; } .cart-title { font-size: 2rem; } }
     </style>
 </head>
-
 <body>
-
-<header>
-    <div class="logo-container">
-        <img src="Fancy.png" alt="Fancy Couture Logo" class="logo">
-        <p class="signature">
-            Heartmade by Ire
-        </p>
-    </div>
-</header>
-
-<div class="cart-page">
-    <h1 class="cart-title">Mon panier</h1>
-    <div id="cartContainer"></div>
-</div>
-
+<header><img src="Fancy.png" alt="Fancy Couture Logo" class="logo"><p class="signature">Heartmade by Ire</p></header>
+<main class="cart-page"><h1 class="cart-title">Mon panier</h1><div id="cartContainer" aria-live="polite"></div></main>
+<footer>© 2026 Fancy Couture</footer>
 <script>
     const CART_KEY = 'fancyCart';
-
+    const container = document.getElementById('cartContainer');
     function getCart() {
         try {
-            return JSON.parse(localStorage.getItem(CART_KEY)) || [];
-        } catch (error) {
-            return [];
-        }
+            const parsed = JSON.parse(localStorage.getItem(CART_KEY));
+            if (!Array.isArray(parsed)) return [];
+            return parsed.filter(item => item && typeof item.id === 'string' && typeof item.name === 'string' && Number.isFinite(Number(item.price)) && Number(item.price) >= 0 && Number.isFinite(Number(item.quantity)) && Number(item.quantity) > 0);
+        } catch { return []; }
     }
-
-    function saveCart(cart) {
-        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    function saveCart(cart) { localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
+    function formatPrice(value) { return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(value); }
+    function createElement(tag, className, text) {
+        const element = document.createElement(tag);
+        if (className) element.className = className;
+        if (text !== undefined) element.textContent = text;
+        return element;
     }
-
-    function formatPrice(value) {
-        return `${value} €`;
-    }
-
-    function renderCart() {
-        const cart = getCart();
-        const container = document.getElementById('cartContainer');
-
-        if (!cart.length) {
-            container.innerHTML = `
-                <div class="empty-cart">
-                    Votre panier est vide.<br>
-                    <div class="actions">
-                        <a href="index.html" class="primary-btn">Retour à la galerie</a>
-                    </div>
-                </div>
-            `;
-            return;
-        }
-
-        let total = 0;
-
-        cart.forEach(item => {
-            total += item.price * item.quantity;
-        });
-
-        container.innerHTML = `
-            ${cart.map(item => `
-                <div class="cart-item">
-                    <img src="${item.image}" alt="${item.name}">
-                    <div>
-                        <h3>${item.name}</h3>
-                        <div class="price">${formatPrice(item.price)}</div>
-                    </div>
-                    <div class="quantity-control">
-                        <button onclick="updateQuantity('${item.id}', -1)">-</button>
-                        <span>${item.quantity}</span>
-                        <button onclick="updateQuantity('${item.id}', 1)">+</button>
-                    </div>
-                    <button class="remove-btn" onclick="removeItem('${item.id}')">Supprimer</button>
-                </div>
-            `).join('')}
-
-            <div class="cart-summary">
-                <h3>Résumé</h3>
-                <div class="total">
-                    <span>Total</span>
-                    <span>${formatPrice(total)}</span>
-                </div>
-                <div class="actions">
-                    <a href="index.html" class="secondary-btn">Continuer</a>
-                    <a href="mailto:contact@fancy.fr?subject=Commande%20Fancy&body=Bonjour%2C%20je%20souhaite%20passer%20commande%20avec%20le%20panier%20suivant%20%3A%0A${encodeURIComponent(JSON.stringify(cart))}" class="primary-btn">Commander</a>
-                </div>
-            </div>
-        `;
-    }
-
     function updateQuantity(productId, change) {
         const cart = getCart();
-        const index = cart.findIndex(item => item.id === productId);
-
-        if (index === -1) return;
-
-        cart[index].quantity += change;
-
-        if (cart[index].quantity <= 0) {
-            cart.splice(index, 1);
+        const item = cart.find(product => product.id === productId);
+        if (!item) return;
+        item.quantity = Number(item.quantity) + change;
+        saveCart(cart.filter(product => product.quantity > 0));
+        renderCart();
+    }
+    function removeItem(productId) { saveCart(getCart().filter(item => item.id !== productId)); renderCart(); }
+    function checkout(cart, total) {
+        const orderLines = cart.map(item => `- ${item.name} x ${item.quantity} : ${formatPrice(item.price * item.quantity)}`).join('\n');
+        const body = `Bonjour,\n\nJe souhaite commander :\n${orderLines}\n\nTotal : ${formatPrice(total)}\n\nMerci de m'indiquer les modalités de paiement.`;
+        window.location.href = `mailto:contact@fancy.fr?subject=${encodeURIComponent('Commande Fancy Couture')}&body=${encodeURIComponent(body)}`;
+    }
+    function renderCart() {
+        const cart = getCart();
+        container.replaceChildren();
+        if (!cart.length) {
+            const empty = createElement('div', 'empty-cart');
+            empty.append(document.createTextNode('Votre panier est vide.'));
+            const actions = createElement('div', 'actions');
+            const link = createElement('a', 'primary-btn', 'Retour à la galerie');
+            link.href = 'index.html';
+            actions.append(link);
+            empty.append(actions);
+            container.append(empty);
+            return;
         }
-
-        saveCart(cart);
-        renderCart();
+        let total = 0;
+        cart.forEach(item => {
+            const quantity = Number(item.quantity);
+            const price = Number(item.price);
+            total += price * quantity;
+            const row = createElement('article', 'cart-item');
+            const image = document.createElement('img');
+            image.src = typeof item.image === 'string' ? item.image : 'Fancy.png';
+            image.alt = item.name;
+            const details = createElement('div');
+            details.append(createElement('h2', 'item-name', item.name), createElement('p', 'price', `${formatPrice(price)} l’unité`));
+            const controls = createElement('div', 'quantity-control');
+            const decrease = createElement('button', '', '−');
+            decrease.type = 'button'; decrease.setAttribute('aria-label', `Retirer un ${item.name}`);
+            decrease.addEventListener('click', () => updateQuantity(item.id, -1));
+            const count = createElement('span', '', String(quantity));
+            const increase = createElement('button', '', '+');
+            increase.type = 'button'; increase.setAttribute('aria-label', `Ajouter un ${item.name}`);
+            increase.addEventListener('click', () => updateQuantity(item.id, 1));
+            controls.append(decrease, count, increase);
+            const remove = createElement('button', 'remove-btn', 'Supprimer');
+            remove.type = 'button'; remove.addEventListener('click', () => removeItem(item.id));
+            row.append(image, details, controls, remove);
+            container.append(row);
+        });
+        const summary = createElement('section', 'cart-summary');
+        summary.append(createElement('h2', '', 'Résumé de la commande'));
+        const totalRow = createElement('div', 'total');
+        totalRow.append(createElement('span', '', 'Total à payer'), createElement('span', '', formatPrice(total)));
+        const actions = createElement('div', 'actions');
+        const back = createElement('a', 'secondary-btn', 'Continuer mes achats'); back.href = 'index.html';
+        const pay = createElement('button', 'primary-btn', 'Commander et régler');
+        pay.type = 'button'; pay.addEventListener('click', () => checkout(cart, total));
+        actions.append(back, pay);
+        summary.append(totalRow, actions, createElement('p', 'payment-note', 'La commande sera envoyée par e-mail. Les modalités de paiement seront confirmées par Fancy ; le paiement en ligne par carte n’est pas encore activé.'));
+        container.append(summary);
     }
-
-    function removeItem(productId) {
-        const cart = getCart().filter(item => item.id !== productId);
-        saveCart(cart);
-        renderCart();
-    }
-
     renderCart();
 </script>
-
 </body>
-
 </html>
